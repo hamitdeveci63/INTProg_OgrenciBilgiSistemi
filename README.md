@@ -1,0 +1,2 @@
+# INTProg_OgrenciBilgiSistemi
+FirstWeek
