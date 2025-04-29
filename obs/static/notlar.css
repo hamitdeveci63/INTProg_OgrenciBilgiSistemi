@@ -1,0 +1,71 @@
+:root {
+    --admin-color: #9b59b6;
+    --teacher-color: #f39c12;
+    --student-color: #27ae60;
+}
+
+.role-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.admin-badge {
+    background-color: var(--admin-color);
+}
+
+.teacher-badge {
+    background-color: var(--teacher-color);
+}
+
+.student-badge {
+    background-color: var(--student-color);
+}
+
+.sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.stat-card {
+    border-top: 4px solid;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.grade-high {
+    background-color: rgba(46, 204, 113, 0.1);
+}
+
+.grade-medium {
+    background-color: rgba(241, 196, 15, 0.1);
+}
+
+.grade-low {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+.grade-avg {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.progress {
+    height: 10px;
+}
+
+.student-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}

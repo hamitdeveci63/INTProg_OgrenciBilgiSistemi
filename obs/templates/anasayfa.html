@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Bilgi Sistemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/anasayfa.css">
+</head>
+<body>
+   
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-graduation-cap"></i>OBS
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#anasayfa">Anasayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ozellikler">Özellikler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#hakkimizda">Hakkımızda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#iletisim">İletişim</a>
+                    </li>
+                </ul>
+                <div class="ms-lg-3 mt-3 mt-lg-0">
+                    <a href="/giriş" class="btn btn-outline-primary me-2">Giriş Yap</a>
+                    <a href="/kayit" class="btn btn-primary">Kayıt Ol</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+   
+    <section class="hero-section" id="anasayfa">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="hero-title">Modern Öğrenci Bilgi Yönetim Sistemi</h1>
+                    <p class="hero-subtitle">Öğrenci verilerinizi kolayca yönetin, ders programlarınızı oluşturun ve akademik performansı takip edin. Tüm eğitim süreçlerinizi tek bir platformda birleştirin.</p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="/kayit" class="btn btn-primary btn-lg">Hemen Başla</a>
+                        <a href="#ozellikler" class="btn btn-outline-primary btn-lg">Özellikleri Keşfet</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 my-5" id="ozellikler">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Sistem Özellikleri</h2>
+                <p class="text-muted">Öğrenci Bilgi Sistemimizin güçlü özelliklerini keşfedin</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Öğrenci Yönetimi</h3>
+                        <p class="feature-text">Tüm öğrenci bilgilerini merkezi bir sistemde kolayca yönetin ve takip edin. Öğrenci kayıt, güncelleme ve silme işlemlerini hızlıca gerçekleştirin.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="feature-title">Ders Programı</h3>
+                        <p class="feature-text">Dersleri kolayca planlayın ve öğrencilerin ders programlarını oluşturun. Çakışmaları önleyen akıllı programlama sistemi ile zaman kazanın.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="feature-title">Performans Analizi</h3>
+                        <p class="feature-text">Öğrenci performansını detaylı raporlarla analiz edin ve takip edin. Görsel grafiklerle başarı durumunu kolayca değerlendirin.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Not Yönetimi</h3>
+                        <p class="feature-text">Sınav notlarını kolayca girin ve öğrencilerin akademik durumlarını takip edin. Otomatik ortalama hesaplama ile iş yükünüzü azaltın.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Etkinlik Takvimi</h3>
+                        <p class="feature-text">Okul etkinliklerini, sınav tarihlerini ve önemli günleri tek bir takvimde yönetin. Tüm paydaşlara otomatik hatırlatıcılar gönderin.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3 class="feature-title">Bildirim Sistemi</h3>
+                        <p class="feature-text">Önemli duyuruları anında iletin. Öğrenci ve velilere SMS/e-posta bildirimleri göndererek iletişimi güçlendirin.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    
+
+    
+    
+
+    
+    <footer id="iletisim">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>OBS</h4>
+                    </div>
+                    <p class="mb-4">Eğitim yönetiminde yenilikçi çözümler sunan lider kuruluş. Öğrenci, öğretmen ve yöneticiler için kapsamlı bir bilgi yönetim sistemi.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Bağlantılar</h5>
+                    <div class="footer-links">
+                        <a href="#anasayfa">Anasayfa</a>
+                        <a href="#ozellikler">Özellikler</a>
+                        <a href="#hakkimizda">Hakkımızda</a>
+                        <a href="#iletisim">İletişim</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="mb-4">Hesap</h5>
+                    <div class="footer-links">
+                        <a href="/giriş">Giriş Yap</a>
+                        <a href="/kayit">Kayıt Ol</a>
+                        <a href="#">Şifremi Unuttum</a>
+                        <a href="#">Hesap Ayarları</a>
+                        <a href="#">Gizlilik Politikası</a>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="mb-4">İletişim</h5>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> GÜMÜŞHANE MERKEZ</p>
+                        <p><i class="fas fa-phone"></i> (0212) 123 45 67</p>
+                        <p><i class="ayfafas fa-envelope"></i> info@ogrencibis.com</p>
+                        
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+            <div class="text-center pt-3">
+                <p class="mb-0">&copy; 2026 OBS. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+       t
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+      
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

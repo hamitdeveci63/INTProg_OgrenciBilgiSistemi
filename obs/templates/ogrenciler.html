@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Bilgi Sistemi - Öğrenciler</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content {
+            margin-left: 16.666667%;
+            min-height: 100vh;
+        }
+        .sidebar-footer {
+            margin-top: auto;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+        .logout-btn {
+            width: 100%;
+        }
+        .student-detail-card {
+            height: 100%;
+        }
+        .list-group-item.active {
+            background-color: #4e73df;
+            border-color: #4e73df;
+        }
+        .role-badge {
+            font-size: 0.75rem;
+        }
+        .admin-badge {
+            background-color: #4e73df;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3 d-flex flex-column h-100">
+                    <div>
+                        <div class="text-center mb-4">
+                            <h4>Öğrenci Bilgi Sistemi</h4>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="anasayfa.html">
+                                    <i class="fas fa-tachometer-alt me-2"></i> Anasayfa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="ogrenciler.html">
+                                    <i class="fas fa-users me-2"></i> Öğrenciler
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="dersler.html">
+                                    <i class="fas fa-book me-2"></i> Dersler
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="notlar.html">
+                                    <i class="fas fa-graduation-cap me-2"></i> Notlar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="raporlar.html">
+                                    <i class="fas fa-chart-bar me-2"></i> Raporlar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="ayarlar.html">
+                                    <i class="fas fa-cog me-2"></i> Ayarlar
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-footer">
+                        <button class="btn btn-danger logout-btn">
+                            <i class="fas fa-sign-out-alt me-1"></i> Çıkış Yap
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9 col-lg-10 ms-sm-auto px-md-4 py-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Öğrenciler</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2">
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-file-export me-1"></i> Export
+                            </button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-print me-1"></i> Print
+                            </button>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#yeniOgrenciModal">
+                            <i class="fas fa-plus me-1"></i> Yeni Öğrenci
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="dropdown text-end mb-4">
+                    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3 text-end">
+                                <div>Ahmet Demir</div>
+                                <div><span class="role-badge admin-badge">Yönetici</span></div>
+                            </div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profil</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Ayarlar</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Çıkış Yap</a></li>
+                    </ul>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-filter me-2"></i> Filtreleme Seçenekleri
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-3">
+                                    <label class="form-label">Sınıf</label>
+                                    <select class="form-select">
+                                        <option value="">Tüm Sınıflar</option>
+                                        <option value="9A">9A</option>
+                                        <option value="9B">9B</option>
+                                        <option value="10A">10A</option>
+                                        <option value="10B">10B</option>
+                                        <option value="11A">11A</option>
+                                        <option value="11B">11B</option>
+                                        <option value="12A">12A</option>
+                                        <option value="12B">12B</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Durum</label>
+                                    <select class="form-select">
+                                        <option value="">Tüm Durumlar</option>
+                                        <option value="aktif">Aktif</option>
+                                        <option value="riskli">Riskli</option>
+                                        <option value="pasif">Pasif</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="form-label">Arama</label>
+                                    <input type="text" class="form-control" placeholder="Öğrenci adı veya numarası...">
+                                </div>
+                                <div class="col-md-3 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary me-2">
+                                        <i class="fas fa-search me-1"></i> Filtrele
+                                    </button>
+                                    <button type="reset" class="btn btn-outline-secondary">
+                                        <i class="fas fa-sync-alt me-1"></i> Sıfırla
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span><i class="fas fa-list me-2"></i> Öğrenci Listesi</span>
+                                <span class="badge bg-primary">Toplam: 487</span>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="list-group list-group-flush" style="max-height: 600px; overflow-y: auto;">
+                                    <a href="#" class="list-group-item list-group-item-action active">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Ayşe Yılmaz</h6>
+                                            <small>10A</small>
+                                        </div>
+                                        <p class="mb-1">Öğrenci No: 2023001</p>
+                                        <small>Not Ort: 85.4</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Mehmet Kaya</h6>
+                                            <small>11B</small>
+                                        </div>
+                                        <p class="mb-1">Öğrenci No: 2023002</p>
+                                        <small>Not Ort: 72.8</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Elif Demir</h6>
+                                            <small>9A</small>
+                                        </div>
+                                        <p class="mb-1">Öğrenci No: 2023003</p>
+                                        <small>Not Ort: 91.2</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Can Aksoy</h6>
+                                            <small class="text-warning">12A</small>
+                                        </div>
+                                        <p class="mb-1">Öğrenci No: 2023004</p>
+                                        <small class="text-warning">Not Ort: 68.5 (Riskli)</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h6 class="mb-1">Zeynep Şahin</h6>
+                                            <small>10B</small>
+                                        </div>
+                                        <p class="mb-1">Öğrenci No: 2023005</p>
+                                        <small>Not Ort: 78.9</small>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-7">
+                        <div class="card student-detail-card">
+                            <div class="card-header">
+                                <i class="fas fa-user-graduate me-2"></i> Öğrenci Detayları
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-4">
+                                    <div class="col-md-3 text-center">
+                                        <img src="https://via.placeholder.com/150" class="img-thumbnail mb-3" alt="Öğrenci Fotoğrafı">
+                                        <div class="action-buttons">
+                                            <button class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i> Düzenle</button>
+                                            <button class="btn btn-sm btn-outline-danger"><i class="fas fa-trash"></i> Sil</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h4>Ayşe Yılmaz <span class="badge bg-success">Aktif</span></h4>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p><strong>Öğrenci No:</strong> 2023001</p>
+                                                <p><strong>Sınıf:</strong> 10A</p>
+                                                <p><strong>Doğum Tarihi:</strong> 15/05/2007</p>
+                                                <p><strong>Yaş:</strong> 16</p>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><strong>TC Kimlik No:</strong> 12345678901</p>
+                                                <p><strong>Cinsiyet:</strong> Kadın</p>
+                                                <p><strong>Kan Grubu:</strong> A Rh+</p>
+                                                <p><strong>Kayıt Tarihi:</strong> 01/09/2022</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <h5 class="mt-4"><i class="fas fa-address-card me-2"></i> İletişim Bilgileri</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Adres:</strong> 1234 Sokak No:5, Çankaya, Ankara</p>
+                                        <p><strong>Ev Telefonu:</strong> 0312 123 4567</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Cep Telefonu:</strong> 0555 123 4567</p>
+                                        <p><strong>E-posta:</strong> ayse.yilmaz@example.com</p>
+                                    </div>
+                                </div>
+                                
+                                <h5 class="mt-4"><i class="fas fa-users me-2"></i> Veli Bilgileri</h5>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Anne Adı:</strong> Fatma Yılmaz</p>
+                                        <p><strong>Anne Telefon:</strong> 0555 234 5678</p>
+                                        <p><strong>Anne Meslek:</strong> Hemşire</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Baba Adı:</strong> Mehmet Yılmaz</p>
+                                        <p><strong>Baba Telefon:</strong> 0555 345 6789</p>
+                                        <p><strong>Baba Meslek:</strong> Mühendis</p>
+                                    </div>
+                                </div>
+                                
+                                <h5 class="mt-4"><i class="fas fa-book me-2"></i> Akademik Bilgiler</h5>
+                                <hr>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Ders</th>
+                                                <th>1. Sınav</th>
+                                                <th>2. Sınav</th>
+                                                <th>3. Sınav</th>
+                                                <th>Ortalama</th>
+                                                <th>Durum</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Matematik</td>
+                                                <td>85</td>
+                                                <td>90</td>
+                                                <td>88</td>
+                                                <td>87.7</td>
+                                                <td><span class="badge bg-success">Geçti</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fizik</td>
+                                                <td>78</td>
+                                                <td>82</td>
+                                                <td>80</td>
+                                                <td>80.0</td>
+                                                <td><span class="badge bg-success">Geçti</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kimya</td>
+                                                <td>92</td>
+                                                <td>95</td>
+                                                <td>93</td>
+                                                <td>93.3</td>
+                                                <td><span class="badge bg-success">Geçti</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Biyoloji</td>
+                                                <td>75</td>
+                                                <td>70</td>
+                                                <td>72</td>
+                                                <td>72.3</td>
+                                                <td><span class="badge bg-success">Geçti</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="yeniOgrenciModal" tabindex="-1" aria-labelledby="yeniOgrenciModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="yeniOgrenciModalLabel"><i class="fas fa-user-plus me-2"></i> Yeni Öğrenci Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <ul class="nav nav-tabs mb-4" id="studentFormTabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab">Kişisel Bilgiler</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab">İletişim Bilgileri</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="parent-tab" data-bs-toggle="tab" data-bs-target="#parent" type="button" role="tab">Veli Bilgileri</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="academic-tab" data-bs-toggle="tab" data-bs-target="#academic" type="button" role="tab">Akademik Bilgiler</button>
+                            </li>
+                        </ul>
+                        
+                        <div class="tab-content" id="studentFormTabContent">
+                            <div class="tab-pane fade show active" id="personal" role="tabpanel">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Adı</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Soyadı</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">TC Kimlik No</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Öğrenci No</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Doğum Tarihi</label>
+                                        <input type="date" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Cinsiyet</label>
+                                        <select class="form-select" required>
+                                            <option value="">Seçiniz</option>
+                                            <option value="kadin">Kadın</option>
+                                            <option value="erkek">Erkek</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Kan Grubu</label>
+                                        <select class="form-select">
+                                            <option value="">Seçiniz</option>
+                                            <option value="A+">A Rh+</option>
+                                            <option value="A-">A Rh-</option>
+                                            <option value="B+">B Rh+</option>
+                                            <option value="B-">B Rh-</option>
+                                            <option value="AB+">AB Rh+</option>
+                                            <option value="AB-">AB Rh-</option>
+                                            <option value="0+">0 Rh+</option>
+                                            <option value="0-">0 Rh-</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Fotoğraf</label>
+                                        <input type="file" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="contact" role="tabpanel">
+                                <div class="row g-3">
+                                    <div class="col-md-12">
+                                        <label class="form-label">Adres</label>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Ev Telefonu</label>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Cep Telefonu</label>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">E-posta</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="parent" role="tabpanel">
+                                <h6 class="mb-3">Anne Bilgileri</h6>
+                                <div class="row g-3 mb-4">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Anne Adı</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Anne Telefon</label>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Anne Meslek</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Anne E-posta</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                                
+                                <h6 class="mb-3">Baba Bilgileri</h6>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Baba Adı</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Baba Telefon</label>
+                                        <input type="tel" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Baba Meslek</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Baba E-posta</label>
+                                        <input type="email" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-pane fade" id="academic" role="tabpanel">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Sınıf</label>
+                                        <select class="form-select" required>
+                                            <option value="">Seçiniz</option>
+                                            <option value="9A">9A</option>
+                                            <option value="9B">9B</option>
+                                            <option value="10A">10A</option>
+                                            <option value="10B">10B</option>
+                                            <option value="11A">11A</option>
+                                            <option value="11B">11B</option>
+                                            <option value="12A">12A</option>
+                                            <option value="12B">12B</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Kayıt Tarihi</label>
+                                        <input type="date" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label class="form-label">Notlar</label>
+                                        <textarea class="form-control" rows="3" placeholder="Öğrenci hakkında özel notlar..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
