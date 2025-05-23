@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrenci Bilgi Sistemi - Raporlar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+        .main-content {
+            margin-left: 16.666667%;
+            min-height: 100vh;
+        }
+        .report-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            height: 100%;
+        }
+        .report-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        .sidebar-footer {
+            margin-top: auto;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+        }
+        .logout-btn {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3 col-lg-2 d-md-block bg-light sidebar">
+                <div class="position-sticky pt-3 d-flex flex-column h-100">
+                    <div>
+                        <div class="text-center mb-4">
+                            <h4>Öğrenci Bilgi Sistemi</h4>
+                        </div>
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('anasayfa2') }}">
+                                    <i class="fas fa-tachometer-alt me-2"></i>Anasayfa
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('ogrenciler') }}">
+                                    <i class="fas fa-users me-2"></i> Öğrenciler
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('dersler') }}">
+                                    <i class="fas fa-book me-2"></i> Dersler
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('notlar') }}">
+                                    <i class="fas fa-graduation-cap me-2"></i> Notlar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('raporlar') }}">
+                                    <i class="fas fa-chart-bar me-2"></i> Raporlar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url_for('ayarlar') }}">
+                                    <i class="fas fa-cog me-2"></i> Ayarlar
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sidebar-footer">
+                        <button class="btn btn-danger logout-btn">
+                            <a href="{{ url_for('anasayfa2') }}" class="logout">Çıkış Yap</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9 col-lg-10 ms-sm-auto px-md-4 py-4 main-content">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Raporlar</h1>
+                    <div class="dropdown text-end">
+                        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3 text-end">
+                                    <div>Ahmet Demir</div>
+                                    <div><span class="badge bg-primary">Yönetici</span></div>
+                                </div>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser1">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profil</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Ayarlar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="report-card text-center">
+                            <div class="report-icon text-primary">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <h5>Öğrenci Başarı Raporu</h5>
+                            <p>Sınıf veya bireysel öğrenci başarı durumları</p>
+                            <a href="#" class="btn btn-outline-primary btn-sm">Raporu Görüntüle</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="report-card text-center">
+                            <div class="report-icon text-success">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <h5>Öğretmen Performans Raporu</h5>
+                            <p>Öğretmenlerin ders başarı istatistikleri</p>
+                            <a href="#" class="btn btn-outline-success btn-sm">Raporu Görüntüle</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="report-card text-center">
+                            <div class="report-icon text-info">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <h5>Sınıf Bazlı Rapor</h5>
+                            <p>Sınıfların genel başarı durumları</p>
+                            <a href="#" class="btn btn-outline-info btn-sm">Raporu Görüntüle</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="report-card text-center">
+                            <div class="report-icon text-warning">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h5>Ders Başarı Raporu</h5>
+                            <p>Derslere göre başarı istatistikleri</p>
+                            <a href="#" class="btn btn-outline-warning btn-sm">Raporu Görüntüle</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="report-card text-center">
+                            <div class="report-icon text-danger">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h5>Devamsızlık Raporu</h5>
+                            <p>Öğrenci devamsızlık istatistikleri</p>
+                            <a href="#" class="btn btn-outline-danger btn-sm">Raporu Görüntüle</a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 col-lg-4">
+                        <div class="report-card text-center">
+                            <div class="report-icon text-secondary">
+                                <i class="fas fa-file-export"></i>
+                            </div>
+                            <h5>Genel İstatistikler</h5>
+                            <p>Okulun genel performans verileri</p>
+                            <a href="#" class="btn btn-outline-secondary btn-sm">Raporu Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-pie me-2"></i> Hızlı İstatistikler
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3">
+                                <h6>Toplam Öğrenci</h6>
+                                <h4 class="text-primary">487</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <h6>Başarı Oranı</h6>
+                                <h4 class="text-success">78.5%</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <h6>Ortalama Not</h6>
+                                <h4 class="text-info">72.8</h4>
+                            </div>
+                            <div class="col-md-3">
+                                <h6>Devamsızlık</h6>
+                                <h4 class="text-warning">5.2%</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
