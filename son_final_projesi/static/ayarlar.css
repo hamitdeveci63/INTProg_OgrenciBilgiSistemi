@@ -1,0 +1,60 @@
+:root {
+    --admin-color: #9b59b6;
+    --teacher-color: #f39c12;
+    --student-color: #27ae60;
+}
+
+.role-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.admin-badge {
+    background-color: var(--admin-color);
+}
+
+.teacher-badge {
+    background-color: var(--teacher-color);
+}
+
+.student-badge {
+    background-color: var(--student-color);
+}
+
+.sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.settings-card {
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.settings-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.tab-content {
+    padding: 20px;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+}

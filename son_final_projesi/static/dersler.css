@@ -1,0 +1,85 @@
+:root {
+    --admin-color: #9b59b6;
+    --teacher-color: #f39c12;
+    --student-color: #27ae60;
+}
+
+.role-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.admin-badge {
+    background-color: var(--admin-color);
+}
+
+.teacher-badge {
+    background-color: var(--teacher-color);
+}
+
+.student-badge {
+    background-color: var(--student-color);
+}
+
+.sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.stat-card {
+    border-top: 4px solid;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.admin-stat {
+    border-color: var(--admin-color);
+}
+
+.teacher-stat {
+    border-color: var(--teacher-color);
+}
+
+.student-stat {
+    border-color: var(--student-color);
+}
+
+.course-stat {
+    border-color: #0d6efd;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.stat-icon {
+    font-size: 24px;
+}
+
+
+.course-card {
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.course-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}

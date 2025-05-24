@@ -1,0 +1,52 @@
+:root {
+    --admin-color: #9b59b6;
+    --teacher-color: #f39c12;
+    --student-color: #27ae60;
+}
+
+.role-badge {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+}
+
+.admin-badge {
+    background-color: var(--admin-color);
+}
+
+.teacher-badge {
+    background-color: var(--teacher-color);
+}
+
+.student-badge {
+    background-color: var(--student-color);
+}
+
+.sidebar {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    background-color: rgba(13, 110, 253, 0.1);
+}
+
+.stat-card {
+    border-top: 4px solid;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.student-detail-card {
+    border-left: 4px solid var(--student-color);
+}
+
+.action-buttons .btn {
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
